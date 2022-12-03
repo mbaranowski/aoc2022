@@ -114,6 +114,24 @@
             },
             "args": [],
             "cwd": "${workspaceFolder}"
-        }
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug day3",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day3",
+                    "--package=aoc2021"
+                ],
+                "filter": {
+                    "name": "day3",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
     ]
 }

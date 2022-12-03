@@ -51,11 +51,11 @@ fn to_rps(s: &str) -> RPS {
     }
 }
 
-fn player_move(s: &str, opponent: RPS) -> RPS {
+fn player_move(s: &str, opponent: &RPS) -> RPS {
     match s {
-        "X" => to_lose(&opponent),
-        "Y" => opponent,
-        "Z" => to_beat(&opponent),
+        "X" => to_lose(opponent),
+        "Y" => *opponent,
+        "Z" => to_beat(opponent),
         _ => panic!("invalid input"),
     }
 }
@@ -82,8 +82,7 @@ fn part_2(path: &str) {
         .map(|line| {
             let parts = line.split(" ").collect::<Vec<&str>>();
             let opponent_move = to_rps(parts[0]);
-            let player_move = player_move(parts[1], opponent_move);
-
+            let player_move = player_move(parts[1], &opponent_move);
             score(&player_move, &opponent_move) + points(&player_move)
         })
         .sum::<u64>();
